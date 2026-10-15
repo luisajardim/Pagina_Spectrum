@@ -57,7 +57,7 @@ function send_mail(array $to, $subject, $html, $text, $replyTo = null)
             $mail->isMail();
         }
 
-        $mail->setFrom($from ?: 'site@localhost', env('MAIL_FROM_NAME', 'Site Spectrum'));
+        $mail->setFrom($from ?: 'site@spectrumbh.com.br', env('MAIL_FROM_NAME', 'Site Spectrum'));
         foreach ($to as $address) {
             $mail->addAddress($address);
         }

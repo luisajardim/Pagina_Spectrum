@@ -18,9 +18,9 @@
           <div class="field"><label for="locacao-diarias">Nº de diárias</label><input type="text" id="locacao-diarias" name="diarias"></div>
           <div class="field"><label for="locacao-periodo">Período (de / até)</label><input type="text" id="locacao-periodo" name="periodo"></div>
           <div class="field"><label for="locacao-estado">Estado de entrega</label><input type="text" id="locacao-estado" name="estado"></div>
-          <?= turnstile_widget() ?>
           <div class="form-actions">
             <button type="submit" class="btn btn-primary">Solicitar locação</button>
+            <?= turnstile_widget() ?>
           </div>
         </div>
         <div class="form-success" role="status" tabindex="-1">✓ Solicitação de locação enviada com sucesso! Nossa equipe entrará em contato em breve.</div>

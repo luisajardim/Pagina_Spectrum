@@ -18,9 +18,9 @@
           <div class="field"><label for="contrato-documento">CNPJ ou CPF do responsável</label><input type="text" id="contrato-documento" name="documento"></div>
           <div class="field"><label for="contrato-equipamentos">Quantidade e tipo de equipamentos</label><input type="text" id="contrato-equipamentos" name="equipamentos"></div>
           <div class="field full"><label for="contrato-mensagem">Mensagem <span class="req">*</span></label><textarea id="contrato-mensagem" name="mensagem" required></textarea></div>
-          <?= turnstile_widget() ?>
           <div class="form-actions">
             <button type="submit" class="btn btn-medical">Enviar Solicitação</button>
+            <?= turnstile_widget() ?>
           </div>
         </div>
         <div class="form-success is-medical" role="status" tabindex="-1">✓ Solicitação enviada com sucesso! Nossa equipe entrará em contato em breve.</div>

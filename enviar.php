@@ -194,8 +194,10 @@ function turnstile_ok($response, $ip)
             CURLOPT_TIMEOUT => 10,
         ]);
         $body = curl_exec($ch);
+        $error = curl_error($ch);
         curl_close($ch);
     } else {
+        $error = '';
         $body = @file_get_contents($url, false, stream_context_create(['http' => [
             'method'  => 'POST',
             'header'  => 'Content-Type: application/x-www-form-urlencoded',
@@ -205,7 +207,7 @@ function turnstile_ok($response, $ip)
     }
     $result = $body ? json_decode($body, true) : null;
     if (!is_array($result)) {
-        log_error('Turnstile: sem resposta da Cloudflare');
+        log_error('Turnstile: sem resposta da Cloudflare' . ($error ? ' (' . $error . ')' : ''));
         return false;
     }
     return !empty($result['success']);

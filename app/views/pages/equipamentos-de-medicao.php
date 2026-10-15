@@ -33,9 +33,9 @@
             </div>
           </div>
           <div class="field full"><label for="multimarcas-descricao">Descreva o problema ou a necessidade</label><textarea id="multimarcas-descricao" name="descricao"></textarea></div>
-          <?= turnstile_widget() ?>
           <div class="form-actions">
             <button type="submit" class="btn btn-primary">Enviar solicitação</button>
+            <?= turnstile_widget() ?>
           </div>
         </div>
         <div class="form-success" role="status" tabindex="-1">✓ Solicitação enviada com sucesso! Em breve nossa equipe entrará em contato.</div>

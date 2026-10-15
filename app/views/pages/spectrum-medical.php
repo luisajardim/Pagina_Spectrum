@@ -30,9 +30,9 @@
             </div>
           </div>
           <div class="field full"><label for="chamado-medical-descricao">Descreva o problema que o equipamento apresenta</label><textarea id="chamado-medical-descricao" name="descricao"></textarea></div>
-          <?= turnstile_widget() ?>
           <div class="form-actions">
             <button type="submit" class="btn btn-medical">Enviar chamado técnico</button>
+            <?= turnstile_widget() ?>
           </div>
         </div>
         <div class="form-success is-medical" role="status" tabindex="-1">✓ Chamado técnico enviado com sucesso! Nossa equipe entrará em contato em breve.</div>

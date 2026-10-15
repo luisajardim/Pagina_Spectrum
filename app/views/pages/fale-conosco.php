@@ -25,9 +25,9 @@
           <div class="field"><label for="fale-conosco-tipo">Tipo de solicitação <span class="req">*</span></label><input type="text" id="fale-conosco-tipo" name="tipo" value="Contato Geral" required></div>
           <div class="field"><label for="fale-conosco-assunto">Assunto <span class="req">*</span></label><input type="text" id="fale-conosco-assunto" name="assunto" required></div>
           <div class="field full"><label for="fale-conosco-mensagem">Mensagem <span class="req">*</span></label><textarea id="fale-conosco-mensagem" name="mensagem" required></textarea></div>
-          <?= turnstile_widget() ?>
           <div class="form-actions">
             <button type="submit" class="btn btn-primary">Enviar Solicitação</button>
+            <?= turnstile_widget() ?>
           </div>
         </div>
         <div class="form-success" role="status" tabindex="-1">✓ Solicitação enviada com sucesso! Nossa equipe entrará em contato em breve.</div>
