@@ -1,3 +1,4 @@
+<?php $usaModalCertificado = true; ?>
 <section class="page" id="page-calibracao">
   <div class="wrap page-hero">
     <p class="eyebrow">Calibração · Laboratório Acreditado LASEQ</p>
@@ -7,7 +8,7 @@
     <div class="subhead"><span class="sh-index mono">01</span><h2>Certificação e Escopo de Acreditação</h2></div>
     <div class="cert-two-col">
       <div class="cert-seal-block">
-                <button class="cert-seal-btn" type="button" onclick="openCertModal()" aria-haspopup="dialog">
+                <button class="cert-seal-btn" type="button" data-open-cert aria-haspopup="dialog">
                   <img class="cert-seal-img" src="<?= e(asset('img/selo-acreditacao-cal-0807.webp')) ?>" alt="Selo de Acreditação CAL 0807 — ABNT NBR ISO/IEC 17025">
                   <span class="cert-seal-copy">
                     <span class="cert-seal-title">Selo oficial de acreditação CGCRE/Inmetro</span>
@@ -29,7 +30,7 @@
     <div class="subcard">
       <p class="page-lede" style="margin-bottom:20px;">Emissão de certificados de calibração integrada ao sistema contratado pela Spectrum.</p>
       <div class="btn-row">
-        <button class="btn btn-primary" id="btnCertCalib">Emitir certificado</button>
+        <a class="btn btn-primary as-btn" id="btnCertCalib" <?= link_attrs('certificado_calibracao') ?>>Emitir certificado</a>
       </div>
     </div>
   </div>

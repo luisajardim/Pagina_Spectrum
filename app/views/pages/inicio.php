@@ -1,3 +1,4 @@
+<?php $usaModalCertificado = true; ?>
 <section class="page" id="page-inicio">
   <div class="hero-banner">
     <div class="hero-banner-grid">
@@ -26,7 +27,7 @@
       <h2 class="display">Escolha a área de atendimento</h2>
     </div>
     <div class="tile-grid">
-      <button class="tile" data-route="equipmedicao">
+      <a class="tile as-btn" href="/equipamentos-de-medicao">
         <div class="tile-photo">
           <img src="<?= e(asset('img/area-equipamentos-medicao-isolamento-motor.webp')) ?>" alt="Técnico realizando medição de isolamento em motor elétrico com multímetro">
         </div>
@@ -36,8 +37,8 @@
           <p>Manutenção autorizada Minipa, multimarcas e calibração.</p>
           <span class="tile-cta">Saiba mais →</span>
         </div>
-      </button>
-      <button class="tile" data-route="calibracao">
+      </a>
+      <a class="tile as-btn" href="/calibracao">
         <div class="tile-photo">
           <img src="<?= e(asset('img/area-calibracao-multimetro-disjuntores.webp')) ?>" alt="Multímetro medindo tensão em quadro de disjuntores">
         </div>
@@ -47,8 +48,8 @@
           <p>Laboratório de calibração acreditado e emissão de certificados.</p>
           <span class="tile-cta" style="color:var(--amber)">Saiba mais →</span>
         </div>
-      </button>
-      <button class="tile" data-route="medicos">
+      </a>
+      <a class="tile as-btn" href="/spectrum-medical">
         <div class="tile-photo">
           <img src="<?= e(asset('img/area-medical-laser-epilacao.webp')) ?>" alt="Profissional operando equipamento de laser de epilação">
         </div>
@@ -58,8 +59,8 @@
           <p>Manutenção para equipamentos da saúde e estética.</p>
           <span class="tile-cta is-medical">Saiba mais →</span>
         </div>
-      </button>
-      <button class="tile" data-route="locacao">
+      </a>
+      <a class="tile as-btn" href="/locacao">
         <div class="tile-photo">
           <img src="<?= e(asset('img/area-locacao-terrometro-digital.webp')) ?>" alt="Terrômetro digital em uso para medição de aterramento">
         </div>
@@ -69,7 +70,7 @@
           <p>Instrumentos de medição disponíveis para locação.</p>
           <span class="tile-cta">Saiba mais →</span>
         </div>
-      </button>
+      </a>
     </div>
   </div>
 
@@ -111,7 +112,7 @@
       </div>
 
       <div class="cert-seal-block">
-        <button class="cert-seal-btn" type="button" onclick="openCertModal()" aria-haspopup="dialog">
+        <button class="cert-seal-btn" type="button" data-open-cert aria-haspopup="dialog">
           <img class="cert-seal-img" src="<?= e(asset('img/selo-acreditacao-cal-0807.webp')) ?>" alt="Selo de Acreditação CAL 0807 — ABNT NBR ISO/IEC 17025">
           <span class="cert-seal-copy">
             <span class="cert-seal-title">Selo oficial de acreditação CGCRE/Inmetro</span>

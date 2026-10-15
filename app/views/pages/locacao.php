@@ -6,21 +6,25 @@
 
     <div class="subhead"><span class="sh-index mono">01</span><h2>Solicitar Orçamento de Locação</h2></div>
     <div class="subcard">
-      <form class="pform" id="formLocacao" data-destinatarios="spectrumbh@spectrumbh.com.br">
+      <?php list($formClasses, $formError) = form_state('locacao'); $usaFormulario = true; ?>
+      <form class="pform<?= $formClasses ?>" id="formLocacao" action="/enviar.php" method="post" data-ajax>
         <div class="form-fields">
-          <div class="field"><label>Nome <span class="req">*</span></label><input type="text" required></div>
-          <div class="field"><label>CNPJ da empresa</label><input type="text"></div>
-          <div class="field"><label>Telefone <span class="req">*</span></label><input type="tel" required></div>
-          <div class="field"><label>E-mail <span class="req">*</span></label><input type="email" required></div>
-          <div class="field"><label>Equipamento de interesse</label><input type="text"></div>
-          <div class="field"><label>Nº de diárias</label><input type="text"></div>
-          <div class="field"><label>Período (de / até)</label><input type="text"></div>
-          <div class="field"><label>Estado de entrega</label><input type="text"></div>
+          <?= form_hidden_fields('locacao') ?>
+          <div class="field"><label for="locacao-nome">Nome <span class="req">*</span></label><input type="text" id="locacao-nome" name="nome" autocomplete="name" required></div>
+          <div class="field"><label for="locacao-cnpj">CNPJ da empresa</label><input type="text" id="locacao-cnpj" name="cnpj"></div>
+          <div class="field"><label for="locacao-telefone">Telefone <span class="req">*</span></label><input type="tel" id="locacao-telefone" name="telefone" autocomplete="tel" required></div>
+          <div class="field"><label for="locacao-email">E-mail <span class="req">*</span></label><input type="email" id="locacao-email" name="email" autocomplete="email" required></div>
+          <div class="field"><label for="locacao-equipamento">Equipamento de interesse</label><input type="text" id="locacao-equipamento" name="equipamento"></div>
+          <div class="field"><label for="locacao-diarias">Nº de diárias</label><input type="text" id="locacao-diarias" name="diarias"></div>
+          <div class="field"><label for="locacao-periodo">Período (de / até)</label><input type="text" id="locacao-periodo" name="periodo"></div>
+          <div class="field"><label for="locacao-estado">Estado de entrega</label><input type="text" id="locacao-estado" name="estado"></div>
+          <?= turnstile_widget() ?>
           <div class="form-actions">
             <button type="submit" class="btn btn-primary">Solicitar locação</button>
           </div>
         </div>
-        <div class="form-success">✓ Solicitação de locação enviada com sucesso! Nossa equipe entrará em contato em breve.</div>
+        <div class="form-success" role="status" tabindex="-1">✓ Solicitação de locação enviada com sucesso! Nossa equipe entrará em contato em breve.</div>
+        <div class="form-error" role="alert" tabindex="-1"><?= e($formError ?: default_error_message()) ?></div>
       </form>
     </div>
   </div>

@@ -4,35 +4,39 @@
     <h1 class="page-title display">Assistência Técnica: Equipamentos Médicos</h1>
     <p class="page-lede">Manutenção preventiva e corretiva, calibração e emissão de certificado de conformidade para equipamentos médicos, hospitalares, de estética e fisioterapia.</p>
     <div class="btn-row">
-      <button class="btn btn-outline-medical" data-route="contrato">Solicite proposta para contrato de manutenção →</button>
+      <a class="btn btn-outline-medical as-btn" href="/spectrum-medical/contrato">Solicite proposta para contrato de manutenção →</a>
     </div>
 
     <div class="subhead is-medical"><span class="sh-index mono">01</span><h2>Solicitar Chamado Técnico</h2></div>
     <div class="subcard">
-      <form class="pform" id="formMedicos" data-destinatarios="sirlene@spectrumbh.com.br, claudio.teixeira@spectrumbh.com.br">
+      <?php list($formClasses, $formError) = form_state('chamado-medical'); $usaFormulario = true; ?>
+      <form class="pform<?= $formClasses ?>" id="formMedicos" action="/enviar.php" method="post" data-ajax>
         <div class="form-fields">
-          <div class="field"><label>Nome <span class="req">*</span></label><input type="text" required></div>
-          <div class="field"><label>Nome da empresa</label><input type="text"></div>
-          <div class="field"><label>CNPJ ou CPF do responsável</label><input type="text"></div>
-          <div class="field"><label>Qual equipamento precisa de atendimento <span class="req">*</span></label><input type="text" required></div>
-          <div class="field"><label>Qual a marca do equipamento</label><input type="text"></div>
+          <?= form_hidden_fields('chamado-medical') ?>
+          <div class="field"><label for="chamado-medical-nome">Nome <span class="req">*</span></label><input type="text" id="chamado-medical-nome" name="nome" autocomplete="name" required></div>
+          <div class="field"><label for="chamado-medical-empresa">Nome da empresa</label><input type="text" id="chamado-medical-empresa" name="empresa" autocomplete="organization"></div>
+          <div class="field"><label for="chamado-medical-documento">CNPJ ou CPF do responsável</label><input type="text" id="chamado-medical-documento" name="documento"></div>
+          <div class="field"><label for="chamado-medical-equipamento">Qual equipamento precisa de atendimento <span class="req">*</span></label><input type="text" id="chamado-medical-equipamento" name="equipamento" required></div>
+          <div class="field"><label for="chamado-medical-marca">Qual a marca do equipamento</label><input type="text" id="chamado-medical-marca" name="marca"></div>
           <div class="field">
-            <label>O equipamento está em garantia de fábrica?</label>
-            <div class="radio-row"><label><input type="radio" name="med-warranty" checked> Sim</label><label><input type="radio" name="med-warranty"> Não</label></div>
+            <label id="chamado-medical-garantia-label">O equipamento está em garantia de fábrica?</label>
+            <div class="radio-row" role="radiogroup" aria-labelledby="chamado-medical-garantia-label"><label><input type="radio" name="garantia" value="Sim" checked> Sim</label><label><input type="radio" name="garantia" value="Não"> Não</label></div>
           </div>
           <div class="field full">
-            <label>Tipo de assistência necessária</label>
-            <div class="radio-row">
-              <label><input type="radio" name="med-type" checked> Preventiva + Calibração</label>
-              <label><input type="radio" name="med-type"> Corretiva + Calibração</label>
+            <label id="chamado-medical-assistencia-label">Tipo de assistência necessária</label>
+            <div class="radio-row" role="radiogroup" aria-labelledby="chamado-medical-assistencia-label">
+              <label><input type="radio" name="assistencia" value="Preventiva + Calibração" checked> Preventiva + Calibração</label>
+              <label><input type="radio" name="assistencia" value="Corretiva + Calibração"> Corretiva + Calibração</label>
             </div>
           </div>
-          <div class="field full"><label>Descreva o problema que o equipamento apresenta</label><textarea></textarea></div>
+          <div class="field full"><label for="chamado-medical-descricao">Descreva o problema que o equipamento apresenta</label><textarea id="chamado-medical-descricao" name="descricao"></textarea></div>
+          <?= turnstile_widget() ?>
           <div class="form-actions">
             <button type="submit" class="btn btn-medical">Enviar chamado técnico</button>
           </div>
         </div>
-        <div class="form-success is-medical">✓ Chamado técnico enviado com sucesso! Nossa equipe entrará em contato em breve.</div>
+        <div class="form-success is-medical" role="status" tabindex="-1">✓ Chamado técnico enviado com sucesso! Nossa equipe entrará em contato em breve.</div>
+        <div class="form-error" role="alert" tabindex="-1"><?= e($formError ?: default_error_message()) ?></div>
       </form>
     </div>
 
@@ -40,7 +44,7 @@
     <div class="subcard">
       <p class="page-lede" style="margin-bottom:20px;">Após a conclusão do serviço, o certificado de conformidade do equipamento fica disponível para emissão diretamente pelo sistema interno da Spectrum, necessário para fins de fiscalização da vigilância sanitária local.</p>
       <div class="btn-row">
-        <button class="btn btn-medical" id="btnCertMedico">Emitir certificado</button>
+        <a class="btn btn-medical as-btn" id="btnCertMedico" <?= link_attrs('certificado_medical') ?>>Emitir certificado</a>
       </div>
     </div>
   </div>

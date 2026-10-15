@@ -8,34 +8,38 @@
     <div class="subcard">
       <p class="page-lede" style="margin-bottom:20px;">Soluções Especializadas para manter seus equipamentos Minipa em pleno funcionamento, com segurança, qualidade e confiabilidade.</p>
       <div class="btn-row">
-        <button class="btn btn-primary" id="btnGoogleForm">Solicite atendimento MINIPA</button>
+        <a class="btn btn-primary as-btn" id="btnGoogleForm" <?= link_attrs('atendimento_minipa') ?>>Solicite atendimento MINIPA</a>
       </div>
     </div>
 
     <div class="subhead"><span class="sh-index mono">02</span><h2>Equipamentos Multimarcas: Solicitar Orçamento / Calibração</h2></div>
     <div class="subcard">
       <p class="page-lede" style="margin-bottom:20px;">Atendemos equipamentos de diferentes marcas com a mesma segurança, qualidade e confiabilidade.</p>
-      <form class="pform" id="formMultimarcas">
+      <?php list($formClasses, $formError) = form_state('multimarcas'); $usaFormulario = true; ?>
+      <form class="pform<?= $formClasses ?>" id="formMultimarcas" action="/enviar.php" method="post" data-ajax>
         <div class="form-fields">
-          <div class="field"><label>Nome <span class="req">*</span></label><input type="text" required></div>
-          <div class="field"><label>Empresa</label><input type="text"></div>
-          <div class="field"><label>CNPJ ou CPF</label><input type="text"></div>
-          <div class="field"><label>Telefone <span class="req">*</span></label><input type="tel" required></div>
-          <div class="field"><label>E-mail <span class="req">*</span></label><input type="email" required></div>
-          <div class="field"><label>Equipamento e marca <span class="req">*</span></label><input type="text" required></div>
+          <?= form_hidden_fields('multimarcas') ?>
+          <div class="field"><label for="multimarcas-nome">Nome <span class="req">*</span></label><input type="text" id="multimarcas-nome" name="nome" autocomplete="name" required></div>
+          <div class="field"><label for="multimarcas-empresa">Empresa</label><input type="text" id="multimarcas-empresa" name="empresa" autocomplete="organization"></div>
+          <div class="field"><label for="multimarcas-documento">CNPJ ou CPF</label><input type="text" id="multimarcas-documento" name="documento"></div>
+          <div class="field"><label for="multimarcas-telefone">Telefone <span class="req">*</span></label><input type="tel" id="multimarcas-telefone" name="telefone" autocomplete="tel" required></div>
+          <div class="field"><label for="multimarcas-email">E-mail <span class="req">*</span></label><input type="email" id="multimarcas-email" name="email" autocomplete="email" required></div>
+          <div class="field"><label for="multimarcas-equipamento">Equipamento e marca <span class="req">*</span></label><input type="text" id="multimarcas-equipamento" name="equipamento" required></div>
           <div class="field full">
-            <label>O que você precisa? <span class="helper-text" style="display:block; font-weight:400;">Selecione uma ou as duas opções</span></label>
-            <div class="radio-row">
-              <label><input type="checkbox" name="mm-need-manutencao"> Orçamento de manutenção</label>
-              <label><input type="checkbox" name="mm-need-calibracao"> Orçamento de calibração</label>
+            <label id="multimarcas-necessidade-label">O que você precisa? <span class="helper-text" style="display:block; font-weight:400;">Selecione uma ou as duas opções</span></label>
+            <div class="radio-row" role="group" aria-labelledby="multimarcas-necessidade-label">
+              <label><input type="checkbox" name="necessidade[]" value="Orçamento de manutenção"> Orçamento de manutenção</label>
+              <label><input type="checkbox" name="necessidade[]" value="Orçamento de calibração"> Orçamento de calibração</label>
             </div>
           </div>
-          <div class="field full"><label>Descreva o problema ou a necessidade</label><textarea></textarea></div>
+          <div class="field full"><label for="multimarcas-descricao">Descreva o problema ou a necessidade</label><textarea id="multimarcas-descricao" name="descricao"></textarea></div>
+          <?= turnstile_widget() ?>
           <div class="form-actions">
             <button type="submit" class="btn btn-primary">Enviar solicitação</button>
           </div>
         </div>
-        <div class="form-success">✓ Solicitação enviada com sucesso! Em breve nossa equipe entrará em contato.</div>
+        <div class="form-success" role="status" tabindex="-1">✓ Solicitação enviada com sucesso! Em breve nossa equipe entrará em contato.</div>
+        <div class="form-error" role="alert" tabindex="-1"><?= e($formError ?: default_error_message()) ?></div>
       </form>
     </div>
 
