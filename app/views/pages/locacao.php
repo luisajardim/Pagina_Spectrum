@@ -27,8 +27,7 @@
         <div class="form-error" role="alert" tabindex="-1"><?= e($formError ?: default_error_message()) ?></div>
       </form>
     </div>
-  </div>
-<div class="subhead"><span class="sh-index mono">02</span><h2>Catálogo de Locação de Equipamentos</h2></div>
+    <div class="subhead"><span class="sh-index mono">02</span><h2>Catálogo de Locação de Equipamentos</h2></div>
     <div class="subcard">
       <div style="overflow-x:auto;">
         <table class="rental-table">
@@ -51,5 +50,5 @@
         </table>
       </div>
     </div>
-
-    </section>
+  </div>
+</section>

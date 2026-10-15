@@ -48,8 +48,7 @@
         <?= link_badge('certificado_medical') ?>
       </div>
     </div>
-  </div>
-<div class="subhead is-medical"><span class="sh-index mono">03</span><h2>Catálogo de Manutenção</h2></div>
+    <div class="subhead is-medical"><span class="sh-index mono">03</span><h2>Catálogo de Manutenção</h2></div>
     <div class="subcard">
       <div class="med-group">
         <h4 class="med-group-title grp-hosp">Hospitalar / Suporte à Vida</h4>
@@ -98,5 +97,5 @@
         </div>
       </div>
     </div>
-
-    </section>
+  </div>
+</section>

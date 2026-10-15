@@ -495,3 +495,32 @@ form.pform.is-sending button[type="submit"]{ opacity:.6; cursor:progress; }
 .visually-hidden{ position:absolute !important; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
 .skip-link{ position:absolute; left:-10000px; top:8px; z-index:300; background:var(--surface); color:var(--ink); padding:10px 16px; border-radius:6px; box-shadow:var(--shadow); font-weight:600; font-size:14px; }
 .skip-link:focus{ left:8px; }
+
+/* ---------- responsividade (celular e tablet) ---------- */
+/* .page-hero e .timeline-section anulavam o padding lateral do .wrap.
+   Em telas largas nada muda; abaixo de ~1236px a margem lateral volta
+   gradualmente, para o conteúdo não encostar na borda da tela. */
+.wrap.page-hero, .wrap.timeline-section{
+  padding-left:clamp(0px, calc(28px - (100vw - 1180px) / 2), 28px);
+  padding-right:clamp(0px, calc(28px - (100vw - 1180px) / 2), 28px);
+}
+@media (max-width:640px){
+  .wrap, .wrap.page-hero, .wrap.timeline-section{ padding-left:20px; padding-right:20px; }
+  .nav{ padding:12px 20px; }
+  .page-hero{ padding-top:72px; }
+  .subcard{ padding:20px; }
+  .cert-seal-block{ padding:24px; }
+  .subhead{ margin-top:44px; }
+  /* botão "Início" rola junto com a página em vez de flutuar sobre o conteúdo */
+  .back-btn{ position:absolute; top:80px; left:20px; }
+  /* 16px evita o zoom automático do iPhone ao tocar nos campos */
+  .field input[type="text"], .field input[type="email"], .field input[type="tel"], .field select, .field textarea,
+  .search-box input{ font-size:16px; }
+  .hero-stats{ grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; }
+  .stat-num{ font-size:17px; }
+  .eyebrow{ align-items:flex-start; }
+  .eyebrow::before{ flex:none; margin-top:.6em; }
+  .cert-modal-overlay{ padding:12px; }
+  .cert-modal-foot .btn{ flex:1; justify-content:center; }
+  .btn{ white-space:normal; }
+}

@@ -206,21 +206,28 @@ O que mudou de propósito:
   - fotos em WebP;
   - selo reduzido para 3× o tamanho exibido;
   - PDF idêntico ao original.
+- **Celular e tablet** (bloco "responsividade" no fim de `site.css`):
+  - margem lateral em todas as seções; no protótipo o topo das páginas internas, a linha do
+    tempo e o bloco "Precisão metrológica" encostavam na borda da tela;
+  - os catálogos de Spectrum Medical e Locação foram para dentro do container de conteúdo
+    (no protótipo ficavam colados na borda, também no computador);
+  - o botão "Início" rola junto com a página em vez de flutuar sobre o conteúdo;
+  - campos com fonte de 16 px, para o iPhone não dar zoom ao tocar;
+  - botões quebram a linha em vez de passar da tela; modal com botões em largura total.
+
+  Nas telas largas (computador) o visual continua idêntico ao protótipo, exceto pelos dois
+  catálogos, que agora ficam alinhados com o resto do conteúdo.
 
 ## Pontos do protótipo mantidos como estão (para decidir)
 
-1. **Catálogos fora da margem**: em Spectrum Medical ("03 Catálogo de Manutenção") e em Locação
-   ("02 Catálogo de Locação"), a seção está fora do container de conteúdo. Ela encosta nas
-   bordas da tela, sem a margem lateral das outras seções. Parece um erro de marcação do
-   protótipo; a correção é mover uma linha em cada arquivo.
-2. **Chamado Técnico sem telefone nem e-mail**: o formulário da Spectrum Medical não pede
+1. **Chamado Técnico sem telefone nem e-mail**: o formulário da Spectrum Medical não pede
    nenhum dos dois, então a equipe não tem como responder diretamente.
-3. **Rodapé e logo do Contrato**: no protótipo, a sub-página Contrato usa o logo padrão e mostra
+2. **Rodapé e logo do Contrato**: no protótipo, a sub-página Contrato usa o logo padrão e mostra
    os dois contatos no rodapé. Mantive assim. Para seguir a regra da Spectrum Medical, troque
    `logo` e `rodape` dessa página em `app/config.php`.
-4. **Texto de rascunho publicado**: em Spectrum Medical aparece "lista detalhada de tipos a
+3. **Texto de rascunho publicado**: em Spectrum Medical aparece "lista detalhada de tipos a
    complementar com a Spectrum", que parece uma anotação interna.
-5. **Contraste de cores abaixo do recomendado** (WCAG AA pede 4,5:1 para texto pequeno):
+4. **Contraste de cores abaixo do recomendado** (WCAG AA pede 4,5:1 para texto pequeno):
 
    | Cor | Contraste | Onde aparece |
    |---|---|---|
@@ -229,4 +236,4 @@ O que mudou de propósito:
    | Verde `#0F8B7F` | 4,2:1 | inclusive texto branco nos botões verdes |
 
    As cores não foram alteradas.
-6. **"O que você precisa?"** (Multimarcas) é opcional, como no protótipo (sem asterisco).
+5. **"O que você precisa?"** (Multimarcas) é opcional, como no protótipo (sem asterisco).
