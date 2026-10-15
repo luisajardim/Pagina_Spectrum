@@ -31,6 +31,7 @@
       <p class="page-lede" style="margin-bottom:20px;">Emissão de certificados de calibração integrada ao sistema contratado pela Spectrum.</p>
       <div class="btn-row">
         <a class="btn btn-primary as-btn" id="btnCertCalib" <?= link_attrs('certificado_calibracao') ?>>Emitir certificado</a>
+        <?= link_badge('certificado_calibracao') ?>
       </div>
     </div>
   </div>

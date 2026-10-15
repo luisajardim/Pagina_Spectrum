@@ -10,21 +10,23 @@
 return [
 
     // ------------------------------------------------------------------
-    // Links dos botões. Enquanto 'url' for 'PENDENTE', o botão mostra o
-    // aviso abaixo (mesmo comportamento do protótipo).
+    // Links dos botões. Valores especiais de 'url':
+    //   'PENDENTE'  o botão só mostra o aviso abaixo
+    //   'EM_BREVE'  idem, e aparece o selo "Em breve" ao lado do botão
+    // Quando o sistema estiver pronto, troque pela URL real.
     // ------------------------------------------------------------------
     'links' => [
         'atendimento_minipa' => [
-            'url'   => 'PENDENTE', // botão "Solicite atendimento MINIPA" (Equip. de Medição)
+            'url'   => 'https://www.minipa.com.br/', // botão "Solicite atendimento MINIPA" (Equip. de Medição)
             'aviso' => 'Abrindo formulário de atendimento Minipa...',
         ],
         'certificado_medical' => [
-            'url'   => 'PENDENTE', // botão "Emitir certificado" (Spectrum Medical)
-            'aviso' => 'Abrindo sistema de emissão de certificados...',
+            'url'   => 'EM_BREVE', // botão "Emitir certificado" (Spectrum Medical)
+            'aviso' => 'A emissão de certificados pelo site estará disponível em breve.',
         ],
         'certificado_calibracao' => [
-            'url'   => 'PENDENTE', // botão "Emitir certificado" (Calibração)
-            'aviso' => 'Abrindo sistema de emissão de certificados...',
+            'url'   => 'EM_BREVE', // botão "Emitir certificado" (Calibração)
+            'aviso' => 'A emissão de certificados pelo site estará disponível em breve.',
         ],
     ],
 

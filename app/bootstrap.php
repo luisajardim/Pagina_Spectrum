@@ -83,15 +83,21 @@ function absolute_url($path)
 
 /**
  * Atributos de um botão cujo destino é configurado em config.php → links.
- * Enquanto o valor for 'PENDENTE', o botão mostra o aviso do protótipo.
+ * Enquanto o valor for 'PENDENTE' ou 'EM_BREVE', o botão mostra um aviso.
  */
 function link_attrs($key)
 {
     $link = config('links.' . $key);
-    if (empty($link['url']) || $link['url'] === 'PENDENTE') {
+    if (empty($link['url']) || in_array($link['url'], ['PENDENTE', 'EM_BREVE'], true)) {
         return 'href="#" data-link-pendente="' . e($link['aviso']) . '"';
     }
     return 'href="' . e($link['url']) . '" target="_blank" rel="noopener"';
+}
+
+/** Selo "Em breve" ao lado do botão, quando o link está marcado como 'EM_BREVE'. */
+function link_badge($key)
+{
+    return config('links.' . $key . '.url') === 'EM_BREVE' ? '<span class="badge-soon">Em breve</span>' : '';
 }
 
 /** Token com a hora em que o formulário foi exibido (usado contra robôs). */

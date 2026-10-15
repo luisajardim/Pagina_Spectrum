@@ -167,10 +167,10 @@ site usa só o honeypot, o tempo mínimo e o limite por IP.
 
 ### O que ainda falta para publicar
 
-- [ ] URLs reais dos botões "Solicite atendimento MINIPA", "Emitir certificado" (Spectrum
-      Medical) e "Emitir certificado" (Calibração), em `app/config.php`.
+- [ ] URLs reais dos botões "Emitir certificado" (Spectrum Medical e Calibração), hoje
+      marcados como `EM_BREVE` em `app/config.php` (mostram o selo "Em breve").
 - [ ] Conta de e-mail do site e senha SMTP, no `.env`.
-- [ ] Domínio final, em `SITE_URL`. Hoje o padrão é `https://www.spectrumbh.com.br`.
+- [x] Domínio final: `https://www.spectrumbh.com.br` (já é o padrão de `SITE_URL`).
 - [ ] Chaves do Turnstile.
 - [ ] Aprovação dos títulos e descrições das páginas (`app/config.php`) e da imagem de
       compartilhamento (`assets/img/og-spectrum.jpg`).

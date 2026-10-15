@@ -45,6 +45,7 @@
       <p class="page-lede" style="margin-bottom:20px;">Após a conclusão do serviço, o certificado de conformidade do equipamento fica disponível para emissão diretamente pelo sistema interno da Spectrum, necessário para fins de fiscalização da vigilância sanitária local.</p>
       <div class="btn-row">
         <a class="btn btn-medical as-btn" id="btnCertMedico" <?= link_attrs('certificado_medical') ?>>Emitir certificado</a>
+        <?= link_badge('certificado_medical') ?>
       </div>
     </div>
   </div>
