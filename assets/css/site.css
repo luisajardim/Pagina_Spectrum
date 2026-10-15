@@ -47,6 +47,8 @@ img{max-width:100%; display:block;}
 .wrap{max-width:1180px; margin:0 auto; padding:0 28px;}
 section{scroll-margin-top:84px;}
 button{font-family:inherit;}
+/* links que no protótipo eram <button>: mantêm a métrica de botão */
+:where(a.as-btn){ display:inline-block; line-height:normal; text-decoration:none; }
 
 ::selection{ background:var(--brand); color:#fff; }
 a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible{
@@ -97,13 +99,13 @@ header.site{
   display:flex; gap:22px; list-style:none; margin:0; padding:0;
   font-size:13.5px; font-weight:500;
 }
-.navlinks button{
+.navlinks button, .navlinks a{
   background:none; border:none; cursor:pointer; text-decoration:none; color:var(--ink-soft);
   position:relative; padding:6px 0; font-size:13.5px; font-weight:500; font-family:inherit;
 }
-.navlinks button:hover{ color:var(--brand); }
-.navlinks button.active{ color:var(--accent-red); }
-.navlinks button.active::after{
+.navlinks button:hover, .navlinks a:hover{ color:var(--brand); }
+.navlinks button.active, .navlinks a.active{ color:var(--accent-red); }
+.navlinks button.active::after, .navlinks a.active::after{
   content:""; position:absolute; left:0; right:0; bottom:0; height:2px; background:var(--accent-red);
 }
 .navcta{ display:flex; align-items:center; gap:12px; }
@@ -118,11 +120,11 @@ header.site{
   background:var(--surface);
 }
 .mobile-menu.open{ display:flex; }
-.mobile-menu button{
+.mobile-menu button, .mobile-menu a{
   text-align:left; background:none; border:none; padding:12px 6px; font-size:15px; color:var(--ink);
   border-bottom:1px solid var(--line); cursor:pointer; font-family:inherit;
 }
-.mobile-menu button:last-child{ border-bottom:none; }
+.mobile-menu button:last-child, .mobile-menu a:last-child{ border-bottom:none; }
 
 .back-btn{
   position:fixed; left:18px; top:88px; z-index:39;
@@ -155,9 +157,7 @@ header.site{
 .btn-outline-medical{ background:transparent; color:var(--medical); border-color:var(--medical); }
 .btn[disabled], .btn.is-soon{ cursor:pointer; }
 
-/* ---------- pages / router ---------- */
-.page{ display:none; }
-.page.active{ display:block; }
+/* ---------- pages ---------- */
 .page-hero{ padding:56px 0 8px; }
 .page-head-row{ display:flex; align-items:center; gap:18px; flex-wrap:wrap; margin-bottom:18px; }
 .logo-chip{
@@ -190,7 +190,9 @@ h1.page-title{ font-size:clamp(30px,4vw,46px); line-height:1.08; margin:0 0 16px
 .helper-text{ font-size:14px; color:var(--grey); margin:0 0 0; }
 
 .breadcrumb{ font-size:13.5px; color:var(--grey); margin-bottom:18px; }
-.breadcrumb button{ background:none; border:none; color:var(--brand); cursor:pointer; font-size:13.5px; padding:0; text-decoration:underline; font-family:inherit; }
+.breadcrumb button, .breadcrumb a{ background:none; border:none; color:var(--brand); cursor:pointer; font-size:13.5px; padding:0; text-decoration:underline; font-family:inherit; }
+/* breadcrumb só com o link (sem texto): mesma altura que no protótipo (modo quirks) */
+.breadcrumb.is-link-only{ display:flex; }
 
 /* status badge (unused) */
 .badge-soon{
@@ -355,7 +357,7 @@ h1.page-title{ font-size:clamp(30px,4vw,46px); line-height:1.08; margin:0 0 16px
 }
 
 /* ---------- forms ---------- */
-form.pform{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+form.pform{ display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:1em; /* o protótipo rodava em modo quirks, que aplica 1em abaixo de todo form */ }
 @media (max-width:640px){ form.pform{ grid-template-columns:1fr; } }
 .field{ display:flex; flex-direction:column; gap:6px; }
 .field.full{ grid-column:1 / -1; }
@@ -420,7 +422,7 @@ form.pform.submitted .form-fields{ opacity:.45; pointer-events:none; }
 @media (max-width:760px){ .rental-grid{ grid-template-columns:repeat(2,1fr); } }
 @media (max-width:480px){ .rental-grid{ grid-template-columns:1fr; } }
 .rental-card{ border:1px dashed var(--line); border-radius:10px; padding:18px; background:var(--paper); }
-.rental-table{ width:100%; border-collapse:collapse; font-size:13.5px; border-radius:10px; overflow:hidden; }
+.rental-table{ width:100%; border-collapse:collapse; font-size:13.5px; border-radius:10px; overflow:hidden; line-height:normal; /* idem modo quirks do protótipo */ }
 .rental-table thead th{ background:var(--brand-deep); color:#fff; text-align:left; padding:12px 18px; font-weight:600; font-size:13px; letter-spacing:.02em; }
 .rental-table tbody td{ padding:12px 18px; color:var(--ink-soft); border-bottom:1px solid var(--surface); }
 .rental-table tbody tr:nth-child(odd){ background:var(--paper); }
@@ -479,6 +481,18 @@ footer.site{ padding:56px 0 36px; border-top:1px solid var(--line); margin-top:2
 .wa-link:hover{ color:var(--ink-soft) !important; }
 .foot-bottom{ border-top:1px solid var(--line); padding-top:20px; display:flex; flex-wrap:wrap; justify-content:space-between; gap:10px; font-size:12px; color:var(--grey); }
 .tri-svg{ display:block; }
-/* contato do rodapé por página */
-footer.site.hide-medicos .foot-col-medicos{ display:none; }
-footer.site.hide-locacao .foot-col-locacao{ display:none; }
+
+/* ---------- envio real dos formulários ---------- */
+.form-error{
+  display:none; grid-column:1/-1; align-items:center; gap:10px;
+  background:#FBEAEA; color:var(--accent-red); border:1px solid #EFC4C4; border-radius:10px;
+  padding:14px 16px; font-size:14px; font-weight:500;
+}
+form.pform.has-error .form-error{ display:flex; }
+form.pform.is-sending button[type="submit"]{ opacity:.6; cursor:progress; }
+.hp-field{ position:absolute !important; left:-10000px; top:auto; width:1px; height:1px; overflow:hidden; }
+.cf-turnstile{ grid-column:1/-1; }
+.cf-turnstile:empty{ display:none; }
+.visually-hidden{ position:absolute !important; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+.skip-link{ position:absolute; left:-10000px; top:8px; z-index:300; background:var(--surface); color:var(--ink); padding:10px 16px; border-radius:6px; box-shadow:var(--shadow); font-weight:600; font-size:14px; }
+.skip-link:focus{ left:8px; }
