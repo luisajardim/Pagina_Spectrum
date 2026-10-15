@@ -1,0 +1,10 @@
+# Credenciais (nunca versionar)
+.env
+
+# Logs locais
+*.log
+
+# Sistema
+.DS_Store
+Thumbs.db
+desktop.ini
