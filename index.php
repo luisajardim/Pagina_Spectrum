@@ -20,6 +20,23 @@ if ($path === '/index.php') {
 }
 
 $paginas = config('paginas');
+
+if ($path === '/robots.txt') {
+    header('Content-Type: text/plain; charset=utf-8');
+    echo "User-agent: *\nAllow: /\n\nSitemap: " . absolute_url('/sitemap.xml') . "\n";
+    exit;
+}
+if ($path === '/sitemap.xml') {
+    header('Content-Type: application/xml; charset=utf-8');
+    echo '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
+    echo '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . "\n";
+    foreach (array_keys($paginas) as $url) {
+        echo '  <url><loc>' . e(absolute_url($url)) . "</loc></url>\n";
+    }
+    echo "</urlset>\n";
+    exit;
+}
+
 if (isset($paginas[$path])) {
     $pagina = $paginas[$path];
 } else {
